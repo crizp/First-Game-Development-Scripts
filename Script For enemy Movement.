@@ -1,0 +1,51 @@
+using UnityEngine;
+using UnityEngine.Events;
+
+public class WatcherScript : MonoBehaviour
+{
+    public float StepDistance = 0.5f;
+    public float RollInterval = 1f;
+    public float StepNumber = 1f;
+    private float timer;
+    private float Roll;
+    public float StepBackDistance = 3f;
+    public GameObject FlashLight;
+
+    // Update is called once per frame
+    public void Update()
+    {
+    
+       timer += Time.deltaTime;
+
+        if (timer >= RollInterval)
+        {
+            float roll = Random.Range(1, 100); 
+            Debug.Log("Random number" + roll);
+            timer = 0f;
+        
+       
+            if (roll >= StepNumber)
+            {
+                Debug.Log("Point achieved");
+                MoveWatcher();
+            }
+
+            else
+            {
+                Roll++;
+            }
+      
+        }
+    
+    }
+
+       void MoveWatcher()
+       {
+            transform.position += transform.forward * StepDistance;
+       }
+
+     public void MoveWatcherBackwards()
+        {
+            transform.position -= Vector3.back * StepBackDistance;
+        }
+}
