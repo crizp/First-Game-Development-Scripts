@@ -17,13 +17,14 @@ public class WatcherScript : MonoBehaviour
     
        timer += Time.deltaTime;
 
+        
         if (timer >= RollInterval)
         {
             float roll = Random.Range(1, 100); 
-            Debug.Log("Random number" + roll);
+            Debug.Log("Random number " + roll);
             timer = 0f;
         
-       
+            //Change step number to increase or decrease odds
             if (roll >= StepNumber)
             {
                 Debug.Log("Point achieved");
